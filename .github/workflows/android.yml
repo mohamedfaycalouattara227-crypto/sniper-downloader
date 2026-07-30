@@ -45,6 +45,9 @@ jobs:
         run: chmod +x android/gradlew
 
       - name: Build Android Release APK
+        env:
+          EXPO_PUBLIC_DOMAIN: "github.com"
+          NODE_ENV: production
         run: cd android && ./gradlew assembleRelease
 
       - name: Upload APK
