@@ -23,7 +23,10 @@ jobs:
           version: 9
 
       - name: Install dependencies
-        run: pnpm install --no-frozen-lockfile
+        run: |
+          pnpm install
+          rm -rf node_modules/.pnpm/react-native-reanimated*
+          rm -rf node_modules/react-native-reanimated --no-frozen-lockfile
 
       - name: Setup Java 17
         uses: actions/setup-java@v4
@@ -53,5 +56,5 @@ jobs:
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
-          name: app-release-v7
+          name: app-release-v8
           path: android/app/build/outputs/apk/release/*.apk
